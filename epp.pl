@@ -174,8 +174,6 @@ create_epp_log :- param:epp_logging(file), !,
 	format('EPP log file: ~w~n',LogFile),
 	open(LogFile,append,LogStream),
 	param:setparam(epp_stream,LogStream).
-create_epp_log :- param:epp_logging(on), !,
-	format('EPP logging to console~n').
 create_epp_log :- !.
 
 epp_log_gen(LogEvent, LogData) :-

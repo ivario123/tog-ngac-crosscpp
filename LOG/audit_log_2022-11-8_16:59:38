@@ -1,0 +1,45 @@
+audit(2022-11-8_16:59:38, ngac, ngac_start, success).
+audit(2022-11-8_16:59:46, ngac, policy_admin, setpol('Policy (a)',success)).
+audit(2022-11-8_16:59:46, ngac, policy_admin, getpol(success)).
+audit(2022-11-8_16:59:46, ngac, policy_query, access_granted('Policy (a)',(u1,r,o1))).
+audit(2022-11-8_16:59:46, ngac, policy_query, access_granted('Policy (a)',(u1,w,o1))).
+audit(2022-11-8_16:59:46, ngac, policy_query, access_granted('Policy (a)',(u1,r,o2))).
+audit(2022-11-8_16:59:46, ngac, policy_query, access_denied('Policy (a)',(u1,w,o2))).
+audit(2022-11-8_16:59:46, ngac, policy_admin, setpol('Policy (b)',success)).
+audit(2022-11-8_16:59:46, ngac, policy_admin, getpol(success)).
+audit(2022-11-8_16:59:46, ngac, policy_query, access_denied('Policy (b)',(u1,r,o1))).
+audit(2022-11-8_16:59:46, ngac, policy_query, access_denied('Policy (b)',(u1,w,o1))).
+audit(2022-11-8_16:59:46, ngac, policy_query, access_granted('Policy (b)',(u1,r,o2))).
+audit(2022-11-8_16:59:46, ngac, policy_query, access_granted('Policy (b)',(u1,w,o2))).
+audit(2022-11-8_16:59:57, ngac, policy_admin, setpol(none,success)).
+audit(2022-11-8_16:59:57, ngac, policy_admin, getpol(success)).
+audit(2022-11-8_16:59:57, ngac, policy_admin, load('EXAMPLES/policy_signals_access.pl','Signals Access Policy',success)).
+audit(2022-11-8_16:59:57, ngac, policy_admin, load('EXAMPLES/policy_vehicle_ownership.pl','Vehicle Ownership Policy',success)).
+audit(2022-11-8_16:59:57, ngac, policy_admin, combinepol('Signals Access Policy','Vehicle Ownership Policy','Combined Policy',success)).
+audit(2022-11-8_16:59:57, ngac, policy_admin, getpol(success)).
+audit(2022-11-8_16:59:57, ngac, policy_admin, setpol('Combined Policy',success)).
+audit(2022-11-8_16:59:57, ngac, policy_admin, getpol(success)).
+audit(2022-11-8_16:59:57, ngac, policy_query, access_denied('Combined Policy',('Ana',r,'VIN-1001 Door Signals'))).
+audit(2022-11-8_16:59:57, ngac, policy_query, access_granted('Combined Policy',('Sebastian',r,'VIN-1001 Door Signals'))).
+audit(2022-11-8_16:59:57, ngac, policy_query, access_granted('Combined Policy',('Ana',r,'VIN-3001 Shift Signals'))).
+audit(2022-11-8_16:59:57, ngac, policy_query, access_denied('Combined Policy',('Ana',r,'VIN-1001 Trip Signals'))).
+audit(2022-11-8_16:59:57, ngac, policy_query, access_denied('Combined Policy',('Ana',r,'VIN-3001 Trip Signals'))).
+audit(2022-11-8_16:59:57, ngac, policy_query, access_denied('Combined Policy',('Ana',w,'VIN-1001 Door Signals'))).
+audit(2022-11-8_16:59:57, ngac, policy_query, access_denied('Combined Policy',('Ana',w,'VIN-3001 Shift Signals'))).
+audit(2022-11-8_16:59:57, ngac, policy_query, access_denied('Combined Policy',('Ana',w,'VIN-1001 Trip Signals'))).
+audit(2022-11-8_16:59:58, ngac, policy_query, access_denied('Combined Policy',('Ana',w,'VIN-3001 Trip Signals'))).
+audit(2022-11-8_16:59:58, ngac, policy_admin, initsession(ana_session,'Ana',success)).
+audit(2022-11-8_16:59:58, ngac, policy_admin, initsession(sebastian_session,'Sebastian',success)).
+audit(2022-11-8_16:59:58, ngac, policy_query, access_denied('Combined Policy',(session('Ana'),r,'VIN-1001 Door Signals'))).
+audit(2022-11-8_16:59:58, ngac, policy_query, access_granted('Combined Policy',(session('Sebastian'),r,'VIN-1001 Door Signals'))).
+audit(2022-11-8_16:59:58, ngac, policy_query, access_granted('Combined Policy',(session('Ana'),r,'VIN-3001 Shift Signals'))).
+audit(2022-11-8_16:59:58, ngac, policy_query, access_denied('Combined Policy',(session('Ana'),r,'VIN-1001 Trip Signals'))).
+audit(2022-11-8_16:59:58, ngac, policy_query, access_denied('Combined Policy',(session('Ana'),r,'VIN-3001 Trip Signals'))).
+audit(2022-11-8_16:59:58, ngac, policy_query, access_denied('Combined Policy',(session('Ana'),w,'VIN-1001 Door Signals'))).
+audit(2022-11-8_16:59:58, ngac, policy_query, access_denied('Combined Policy',(session('Ana'),w,'VIN-3001 Shift Signals'))).
+audit(2022-11-8_16:59:58, ngac, policy_query, access_denied('Combined Policy',(session('Ana'),w,'VIN-1001 Trip Signals'))).
+audit(2022-11-8_16:59:58, ngac, policy_query, access_denied('Combined Policy',(session('Ana'),w,'VIN-3001 Trip Signals'))).
+audit(2022-11-8_16:59:58, ngac, policy_admin, endsession(ana_session,success)).
+audit(2022-11-8_16:59:58, ngac, policy_admin, endsession(sebastian_session,success)).
+audit(2022-11-8_16:59:58, ngac, policy_query, access_denied('Combined Policy',(sebastian_session,r,'VIN-1001 Door Signals'))).
+audit(2022-11-8_16:59:58, ngac, policy_admin, setpol(none,success)).
