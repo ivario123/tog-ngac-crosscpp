@@ -211,6 +211,7 @@ create_server_audit_log :- param:audit_logging(file), !,
 	audit:gen_time_stamp(TS),
 	atomic_list_concat(['LOG/audit_log','_',TS],LogFile),
 	format('Audit log file: ~w~n',LogFile),
-	open(LogFile,append,AudStream),
+	open(LogFile,append,AudStream,[create([all])]),
+	
 	param:setparam(audit_stream,AudStream).
 create_server_audit_log.
